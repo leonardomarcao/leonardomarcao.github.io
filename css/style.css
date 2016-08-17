@@ -142,8 +142,10 @@ body {
 }
 
 #special-active-menu-5 {
-	background-color: #e67e22 !important;
+	background-color: #2f2f2f !important;
 }
+
+
 
 @media (min-width: 768px) and (max-width: 991px) {
 	#slide-4 .content-row h2 {
@@ -186,6 +188,9 @@ body {
 	}
 			
 	.nav li[data-slide="1"],
+	
+	.nav li [data-slide="6"],
+
 	.nav li[data-slide="5"] {
 		background-color: #2f2f2f;
 	}
@@ -201,6 +206,8 @@ body {
 	.nav li[data-slide="4"] {
 		background-color: #34495e;
 	}
+
+
 	
 	.navbar-brand {
 		margin: 0;
@@ -461,6 +468,8 @@ body {
 		font-size: 80px;
 		color: white;
 	}
+
+#slide-6,
 
 #slide-5 {
 	background-color: #2f2f2f;
