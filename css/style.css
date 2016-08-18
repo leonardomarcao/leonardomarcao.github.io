@@ -244,17 +244,41 @@ body {
 	padding-top: 130px;
 }
 
-@media (max-width: 991px) {
-	#slide-1 {
-		background-position: -70% 0, 170% 0;
-	}
+/* Retina display */
+@media screen and (min-width: 1024px){
+    .responsive-image{
+        background-position: -70% 0, 170% 0;
+    }
 }
 
-@media (max-width: 767px) {
-	#slide-1 {
-		background-image: none;
-	}
+/* Desktop */
+@media screen and (min-width: 980px) and (max-width: 1024px){
+    .responsive-image{
+        background-position: -70% 0, 170% 0;
+    }
 }
+
+/* Tablet */
+@media screen and (min-width: 760px) and (max-width: 980px){
+    .responsive-image{
+       background-position: -70% 0, 170% 0;
+    }
+}
+
+/* Mobile HD */
+@media screen and (min-width: 350px) and (max-width: 760px){
+    .responsive-image{
+       background-position: -70% 0, 170% 0;
+    }
+}
+
+/* Mobile LD */
+@media screen and (max-width: 350px){
+    .responsive-image{
+        background-position: -70% 0, 170% 0;
+    }
+} 
+
 
 	#home-row-1,
 	#home-row-2 {
@@ -425,7 +449,7 @@ body {
 	
 @media (max-width: 991px) {
 	#slide-3 {
-		text-align: center;
+		text-align: left;
 		width: 100%;
 	}
 	
@@ -468,17 +492,56 @@ body {
 
 
 #slide-5 {
-	background-color: #2f2f2f;
-	color: #e4e6e5;
-	padding-bottom: 350px;
-	padding-top: 90px;
+	background-image: url('../images/bg3.png');
+	color: #ffffff;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+	background-attachment: relative;
+	background-position: center center;
 }
 
-@media (max-width: 767px) {
-	#slide-5 {
-		background-image: none;
-	}
+/* Retina display */
+@media screen and (min-width: 1024px){
+    .responsive-image{
+        background-position: -70% 0, 170% 0;
+    }
 }
+
+/* Desktop */
+@media screen and (min-width: 980px) and (max-width: 1024px){
+    .responsive-image{
+        background-position: -70% 0, 170% 0;
+    }
+}
+
+/* Tablet */
+@media screen and (min-width: 760px) and (max-width: 980px){
+    .responsive-image{
+       background-position: -70% 0, 170% 0;
+    }
+}
+
+/* Mobile HD */
+@media screen and (min-width: 350px) and (max-width: 760px){
+    .responsive-image{
+       background-position: -70% 0, 170% 0;
+    }
+}
+
+/* Mobile LD */
+@media screen and (max-width: 350px){
+    .responsive-image{
+        background-position: -70% 0, 170% 0;
+    }
+} 
 	
 	#slide-5 .line-row .hr {
 		background-color: #4e4e4e;
