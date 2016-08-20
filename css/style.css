@@ -427,7 +427,7 @@ body {
 	margin: 0 auto;
 	overflow: hidden;
 	padding: 0;
-	text-align: right;
+	text-align: left;
 	width: 100%;
 }
 	
@@ -449,7 +449,7 @@ body {
 	
 @media (max-width: 991px) {
 	#slide-3 {
-		text-align: right;
+		text-align: left;
 		width: 100%;
 	}
 	
