@@ -1,0 +1,18 @@
+{
+  "name": "Simptip",
+  "version": "1.0.4",
+  "main": "simptip.min.css",
+  "description": "A simple CSS tooltip made with Sass",
+  "license": "MIT",
+  "author": "Arash Manteghi",
+  "homepage": "https://github.com/arashmanteghi/simptip",
+  "_release": "1.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.0.4",
+    "commit": "afd3f735a027ac03458371ebd719434bac94cd0d"
+  },
+  "_source": "https://github.com/arashmanteghi/simptip.git",
+  "_target": "^1.0.4",
+  "_originalSource": "simptip"
+}

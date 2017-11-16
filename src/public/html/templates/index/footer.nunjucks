@@ -1,0 +1,16 @@
+<footer class="footer-main">
+
+    <div class="social-medias">
+
+        <a href="https://github.com/leonardomarcao" target="_blank"><i class="fa fa-github hvr-bob"></i></a>
+        <a href="https://www.facebook.com/leonardo.marcao.9" target="_blank"><i class="fa fa-facebook hvr-bob"></i></a>
+        <a href="https://www.instagram.com/leonardomarcao" target="_blank"><i class="fa fa-instagram hvr-bob"></i></a>
+        <a href="https://www.youtube.com/channel/UC3T__Zb6GjJmJDmfn7u7zNQ" target="_blank"><i class="fa fa-youtube hvr-bob"></i></a>
+        <a href="https://www.linkedin.com/in/leonardomarcao" target="_blank"><i class="fa fa-linkedin hvr-bob"></i></a>
+    </div>
+
+    <div class="text-final">
+        <a href="mailto:leonardomarcao@sjrp.unesp.br" target="_top">leonardomarcao@sjrp.unesp.br</a>
+    </div>
+
+</footer>

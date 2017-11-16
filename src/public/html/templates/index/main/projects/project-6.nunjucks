@@ -1,0 +1,53 @@
+<li class="project-item">
+    <div class="item hvr-bubble-float-top">
+
+        <span class="lightgallery">
+            <a href="dist/images/projects/webserver-0.jpg" class="cover">
+                <img src="dist/images/projects/webserver-0.jpg" alt=" WebServer - Arduino">
+            </a>            
+        </span>
+
+        <p class="title">
+            WebServer - Arduino
+        </p>
+        <p class="text">
+            WebServer desenvolvido com Arduino e Ethernet Shield para monitoramento de temperatura e humidade num ambiente interno.
+        </p>
+
+        <i class="fa fa-bars open-project" title="View More"></i>
+
+        <div class="project-info">
+            <div class="title">
+                <i class="fa fa-tasks title-icon"></i> Tasks
+                <i class="fa fa-close project-info-close"></i>
+            </div>
+            <div class="body">
+                <p>
+                    Todo monitoramento foi registrado através de um bando de dados, além da possibilidade de acesso remoto ao sistema.    
+                </p>
+                <ul>
+                    <li>
+                        <div class="number">1</div>
+                        <div class="task-item-text">Prototipagem desenvolvida no Fritzing</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">2</div>
+                        <div class="task-item-text">Arduino + Ethernet Shield</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">3</div>
+                        <div class="task-item-text">Utilização da linguagem C + Front-End em BootStrap</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">4</div>
+                        <div class="task-item-text">SGBD: MySql</div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</li>

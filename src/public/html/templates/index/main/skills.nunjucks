@@ -1,0 +1,95 @@
+<hr class="hr-skills" id="skills" xmlns="http://www.w3.org/1999/html">
+
+<section class="section-model-2">
+
+    <header>
+        <h2>Skills</h2>
+    </header>
+
+    <div class="container">
+
+        <ul>
+
+            <li class="hvr-wobble-to-bottom-right">
+                <div class="content">
+                    <div class="img-group">
+                        <img src="dist/images/html5-icon.svg" title="HTML5" alt="HTML5">
+                        <img src="dist/images/css3-icon.svg" title="CSS3" alt="CSS3">
+                        <img src="dist/images/js-icon.svg" title="Javascript" alt="Javascript">
+                    </div>
+                    <p class="text">                        
+                        Criação de projetos utilizando experiência com (UX/UI), combinado com um limpo e organizado código, feito com HTML5, CSS3 e Js.</p>
+                </div>
+            </li>
+
+            <li class="hvr-wobble-to-bottom-right">
+                <div class="content">
+                    <div class="img-group">                        
+                        <img src="dist/images/bootstrap-icon.svg" title="Bootstrap" alt="Bootstrap">
+                        <img src="dist/images/wordpress-icon.svg" title="Bootstrap" alt="WordPress">
+                    </div>
+
+                    <p class="text">
+                        Utilização de CMS (WordPress) com experiência em back-end e framework front-end (Bootstrap) para desenvolvimento ágil e layout responsivo.</p>
+                </div>
+            </li>
+
+            <li class="hvr-wobble-to-bottom-right">
+                <div class="content">
+                    <div class="img-group">
+                        <img src="dist/images/c-icon.svg" title="C" alt="C">
+                        <img src="dist/images/php-icon.svg" title="PHP" alt="PHP">
+                        <img src="dist/images/java-icon.svg" title="Java" alt="Java">
+                        <img src="dist/images/delphi-icon.svg" title="Java" alt="Java">
+                    </div>
+
+                    <p class="text">
+                        Linguagens as quais estudo e utilizo a mais de cinco anos, principalmente uma grande experiência com Delphi/Pascal e C/C++.
+                    </p>
+                </div>
+            </li>
+
+            <li class="hvr-wobble-to-top-right">
+                <div class="content">
+                    <div class="img-group">
+                        <img src="dist/images/mysql-icon.svg" title="Mysql" alt="Mysql">
+                        <img src="dist/images/sql-icon.svg" title="SQL" alt="SQL">
+                        <img src="dist/images/diagram-icon.svg" title="SQL" alt="SQL">
+                    </div>
+
+                    <p class="text">
+                        Utilização de banco de dados relacional (MySQL, SQL) em conjunto com diagramas UML e padrões.
+                    </p>
+                </div>
+            </li>
+
+            <li class="hvr-wobble-to-top-right">
+                <div class="content">
+                    <div class="img-group">
+                        <img src="dist/images/photoshop-icon.svg" title="Photoshop" alt="Photoshop">
+                        <img src="dist/images/github-icon.svg" title="Github" alt="Github">                        
+                    </div>
+
+                    <p class="text">
+                        Idealização de projetos (UX/UI) com PS. Utilizo Git/GitHub como as principais ferramentas para controle de  versionamento de projetos.
+                    </p>
+                </div>
+            </li>
+
+            <li class="hvr-wobble-to-top-right">
+                <div class="content">
+                    <div class="img-group">
+                        <img src="dist/images/linux-icon.svg" title="Linux" alt="Linux">
+                        <img src="dist/images/raspberry-icon.svg" title="Raspberry" alt="Raspberry">
+                        <img src="dist/images/arduino-icon.svg" title="Arduino" alt="Arduino">
+                    </div>
+
+                    <p class="text">
+                       Em adicional, meus três grandes hobbies e paixões. Utilizo Linux, Raspberry e Arduino a mais de quatro anos. Foram inúmeros projetos com os três em conjunto, desde de automação a robótica.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</section>

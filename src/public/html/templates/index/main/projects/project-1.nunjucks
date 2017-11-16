@@ -1,0 +1,62 @@
+<li class="project-item">
+    <div class="item hvr-bubble-float-top">
+
+        <span class="lightgallery">
+            <a href="dist/images/projects/cppc-0.png" class="cover">
+                <img src="dist/images/projects/cppc-0.png" alt="Sistema de Controle e Gerenciamento Patrimonial - Tela Principal - Clique na seta para o 'próximo'">
+            </a>
+            <a href="dist/images/projects/cppc-1.png">
+                <img src="dist/images/projects/cppc-1.png" alt="Sistema de Controle e Gerenciamento Patrimonial - Tela de Login">
+            </a>
+            <a href="dist/images/projects/cppc-2.png">
+                <img src="dist/images/projects/cppc-2.png" alt="Sistema de Controle e Gerenciamento Patrimonial - Termo de Inventário e Tombo">
+            </a>
+            <a href="dist/images/projects/cppc-3.png">
+                <img src="dist/images/projects/cppc-3.png" alt="Sistema de Controle e Gerenciamento Patrimonial - Relatório de Ocorrências">
+            </a>
+        </span>
+
+        <p class="title">
+            CPPC
+        </p>
+        <p class="text">            
+            Sistema de Controle e Gerenciamento Patrimonial desenvolvido enquanto eu realizava estágio na Polícia Civil. 
+        </p>
+
+        <i class="fa fa-bars open-project" title="View More"></i>
+
+        <div class="project-info">
+            <div class="title">
+                <i class="fa fa-tasks title-icon"></i> Tasks
+                <i class="fa fa-close project-info-close"></i>
+            </div>
+            <div class="body">
+                <p>
+                    Todos os passos de desenvolvimento foram acompanhados pelo meu supervisor de estágio Marcelo Cunha Ferreira.
+                </p>
+                <ul>
+                    <li>
+                        <div class="number">1</div>
+                        <div class="task-item-text">Modelagem dos diagramas estrutural e comportamental</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">2</div>
+                        <div class="task-item-text">RAD Studio XE6</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">3</div>
+                        <div class="task-item-text">Banco de Dados: MySQL</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">4</div>
+                        <div class="task-item-text"><a href="https://drive.google.com/file/d/0B8LPARiSl8nONnhMWk50QVdyZHc/view" target="_blank">Certidão</a> do sistema</div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</li>

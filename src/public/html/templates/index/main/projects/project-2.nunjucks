@@ -1,0 +1,56 @@
+<li class="project-item">
+    <div class="item hvr-bubble-float-top">
+
+        <span class="lightgallery">
+            <a href="dist/images/projects/diuvitae-0.png" class="cover">
+                <img src="dist/images/projects/diuvitae-0.png" alt="Diu Vitae - Homepage - Clique na seta para o 'próximo'">
+            </a>
+            <a href="dist/images/projects/diuvitae-1.png">
+                <img src="dist/images/projects/diuvitae-1.png" alt="Diu Vitae - Landing Page">
+            </a>            
+        </span>
+
+        <p class="title">
+            Diu Vitae - Institucional
+        </p>
+        <p class="text">
+            Site Institucional desenvolvido para a casa de repouso Diu Vitae.
+        </p>
+
+        <i class="fa fa-bars open-project" title="View More"></i>
+
+        <div class="project-info">
+            <div class="title">
+                <i class="fa fa-tasks title-icon"></i> Tasks
+                <i class="fa fa-close project-info-close"></i>
+            </div>
+            <div class="body">
+                <p>
+                    O projeto foi acompanhado, desde do início de sua proposta inicial até ao seu término, pelo cliente.
+                </p>
+                <ul>
+                    <li>
+                        <div class="number">1</div>
+                        <div class="task-item-text">UI criada com photoshop</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">2</div>
+                        <div class="task-item-text">Front-End e Back-End desenvolvido com WordPress</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">3</div>
+                        <div class="task-item-text">SGBD MySql</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">4</div>
+                        <div class="task-item-text">Live Page <a href="http://www.diuvitae.com.br/" target="_blank">Click Here</a> </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</li>

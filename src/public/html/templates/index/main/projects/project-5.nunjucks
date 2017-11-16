@@ -1,0 +1,56 @@
+<li class="project-item">
+    <div class="item hvr-bubble-float-top">
+
+        <span class="lightgallery">
+            <a href="dist/images/projects/eccjr-1.png" class="cover">
+                <img src="dist/images/projects/eccjr-1.png" alt="ECCjr - Homepage - Clique na seta para o 'próximo'">
+            </a>
+            <a href="dist/images/projects/eccjr-0.png">
+                <img src="dist/images/projects/eccjr-0.png" alt="ECCjr - Landing Page">
+            </a>            
+        </span>
+
+        <p class="title">
+           ECCjr - Institucional
+        </p>
+        <p class="text">
+            Projeto o qual participei como líder de projetos junto a uma equipe alocada pelo Diretor de Projetos da ECCjr.
+        </p>
+
+        <i class="fa fa-bars open-project" title="View More"></i>
+
+        <div class="project-info">
+            <div class="title">
+                <i class="fa fa-tasks title-icon"></i> Tasks
+                <i class="fa fa-close project-info-close"></i>
+            </div>
+            <div class="body">
+                <p>
+                    O site foi desenvolvido a partir de um protótipo (UI desenvolvido em PS) escolhido pelo Diretor de Projetos e Presidente da Empresa Júnior.
+                </p>
+                <ul>
+                    <li>
+                        <div class="number">1</div>
+                        <div class="task-item-text">UI criada com photoshop</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">2</div>
+                        <div class="task-item-text">Front-End e Back-End desenvolvido com WordPress</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">3</div>
+                        <div class="task-item-text">SGBD MySql</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">4</div>
+                        <div class="task-item-text">Live Page <a href="http://www.eccjr.com.br/" target="_blank">Click Here</a> </div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>    
+            </div>
+        </div>
+    </div>
+</li>

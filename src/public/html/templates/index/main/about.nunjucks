@@ -1,0 +1,110 @@
+<hr class="hr-about" id="about">
+
+<section class="section-model-1">
+
+    <header>
+        <h2>About</h2>
+        <h3>Estudante de Ciência da Computação pela Unesp, empreendedor, apaixonado por IoT e segurança da informação, e movido a base de café ;)</h3>   
+    </header>
+
+    <div class="container">
+
+        <div class="text">
+            <p>
+               Nasci em 1996 no interior de São Paulo, na cidade de São Joaquim da Barra, e iniciei o interesse pela área de Tecnologia da Informação aos 10 anos.
+            </p>
+
+            <p>
+               Em 2013 me formei em Técnico de Informática, e em 2014 comecei o curso de Ciência da Computação pela Universidade de Franca. No mesmo ano, realizei um estágio de 5 meses na Polícia Civil do Estado de São Paulo, pela Fundação do Desenvolvimento Administrativo, onde desenvolvi, sem ônus para o Estado, um Sistema de Controle e Gerenciamento Patrimonial.
+            </p>
+
+            <p>
+               No ano de 2015 entrei no Instituto de Biociência, Letras, e Ciências Exatas - Unesp, localizado em São José do Rio Preto, e no final deste mesmo ano, comecei minha carreira como desenvolvedor na Empresa de Ciência da Computação Júnior, onde participei 2 vezes como líder de projetos. Atualmente, sou estagiário como Analista de Infraestrutura na empresa Criação em Cadeia, owner da empresa LMF Solutions e Diretor de Projetos na ECCjr.
+            </p>
+
+            
+
+        </div>
+
+        <div class="image">
+            <img src="dist/images/leonardo-marcao-logo.png" alt="LMF Solutions">
+        </div>
+
+        <div class="user-data">
+            <div class="user-data-content">
+                <ul>
+
+                    <li>
+                        <div class="user-data-icon">
+                            <I class="fa fa-user-circle"></i>
+                        </div>
+                        <div class="user-data-text">
+                            Leonardo Marcão Florentino
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="user-data-icon">
+                            <img src="dist/images/brazil-icon.png" alt="Leonardo Marcão Brazil Flag">
+                        </div>
+                        <div class="user-data-text">
+                            Brasil
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="user-data-icon">
+                            <I class="fa fa-calendar"></i>
+                        </div>
+                        <div class="user-data-text">
+                            21 anos
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="user-data-icon">
+                            <img src="dist/images/icon-darth.png" alt="Leonardo Marcão Experience">
+                        </div>
+                        <div class="user-data-text">
+                            7 anos de experiência na área de TI
+                        </div>
+                    </li>
+                    
+
+                    <li>
+                        <div class="user-data-icon">
+                            <I class="fa fa-book"></i>
+                        </div>
+                        <div class="user-data-text">
+                            Cursando Ciência da Computação no Instituto de Biociência, Letras, e Ciências Exatas - Unesp
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="user-data-icon">
+                            <I class="fa fa-suitcase"></i>
+                        </div>
+                        <div class="user-data-text">
+                            Atualmente trabalhando como Analista de Infraestrutura na <a href="http://www.criacaoemcadeia.com.br/" target="_blank">Criação 3D</a>, Diretor de Projeto na <a href="http://www.eccjr.com.br/" target="_blank">ECCjr</a> e owner na LMF Solutions
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="user-data-content no-border">
+                <ul class="continuate">
+                    <li>
+                        <I class="fa fa-circle"></i>
+                    </li>
+                    <li>
+                        <I class="fa fa-circle"></i>
+                    </li>
+                    <li>
+                        <I class="fa fa-circle"></i>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

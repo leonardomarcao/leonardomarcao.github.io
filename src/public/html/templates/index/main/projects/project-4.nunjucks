@@ -1,0 +1,43 @@
+<li class="project-item">
+    <div class="item hvr-bubble-float-top">
+
+        <span class="">
+            <a  class="cover">
+                <img src="dist/images/projects/iot-0.jpg" alt="SEG - Cover - Click in the arrow 'next'">
+            </a>            
+        </span>
+
+        <p class="title">
+            Palestra sobre IoT
+        </p>
+        <p class="text">
+            Palestra sobre Internet das Coisas ministrada por mim na ETEC Pedro Badran.
+        </p>
+
+        <i class="fa fa-bars open-project" title="View More"></i>
+
+        <div class="project-info">
+            <div class="title">
+                <i class="fa fa-tasks title-icon"></i> Tasks
+                <i class="fa fa-close project-info-close"></i>
+            </div>
+            <div class="body">
+                <p>
+                    A palestra enfatizou diversas aplicações utilizando IoT, desde de automação residencial a projetos relacionados com a indústria automobilística.
+                </p>
+                <ul>
+                    <li>
+                        <div class="number">1</div>
+                        <div class="task-item-text">Slides da palestra: <a target="_blank" href="https://goo.gl/I1PcnE">Click Here</a></div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">2</div>
+                        <div class="task-item-text">Vídeo da palestra: <a target="_blank" href=" https://www.youtube.com/watch?v=jg3dMoGVfM4">YouTube</a></div>
+                        <div class="clear"></div>
+                    </li>                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</li>

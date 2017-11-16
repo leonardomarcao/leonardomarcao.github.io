@@ -13,7 +13,7 @@ Personal Page was made with love by these people and a bunch of awesome [contrib
 
 #### Creator
 
-[![Leonardo Marcão](https://avatars3.githubusercontent.com/u/6151618?s=460&v=4)](https://github.com/leonardomarcao) |
+[![Leonardo Marcão](https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAf4AAAAJGI1OWEyNmE4LTk5YTktNDdiYS1iODAzLTE1ZGU4N2U4M2Q4Yg.jpg)](https://github.com/leonardomarcao) |
 --- | --- | --- | --- | --- | --- | ---
 [Leonardo Marcão](https://github.com/leonardomarcao)
 

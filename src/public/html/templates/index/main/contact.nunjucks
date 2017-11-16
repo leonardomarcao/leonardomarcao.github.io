@@ -1,0 +1,20 @@
+<hr class="hr-contact" id="contact">
+
+<section class="section-model-4">
+
+    <header>
+        <h2>Contact</h2>
+    </header>
+
+    <div class="container">
+
+        <p class="text-contact">
+            This open source project is in <a href="https://github.com/MichaelRSilva/personal-page" target="_blank">Github.</a>
+            <br>
+            Designed and coded with lots of <img src="dist/images/heart.svg"> by myself.
+        </p>
+
+    </div>
+
+</section>
+

@@ -1,0 +1,46 @@
+<li class="project-item">
+    <div class="item hvr-bubble-float-top">
+
+        <span class="lightgallery">
+            <a href="dist/images/projects/pro2pol-1.png" class="cover">
+                <img src="dist/images/projects/pro2pol-1.png" alt="Pro2Pol - Homepage - Clique na seta para o 'próximo'">
+            </a>  
+            <a href="dist/images/projects/pro2pol-0.png">
+                <img src="dist/images/projects/pro2pol-0.png" alt="Pro2Pol - One Page">
+            </a>                                           
+        </span>
+
+        <p class="title">
+            Pro2pol - Consultoria
+        </p>
+        <p class="text">
+           Projeto o qual participei como líder de projetos junto a uma equipe alocada pelo Diretor de Projetos da ECCjr.
+        </p>
+
+        <i class="fa fa-bars open-project" title="View More"></i>
+
+        <div class="project-info">
+            <div class="title">
+                <i class="fa fa-tasks title-icon"></i> Tasks
+                <i class="fa fa-close project-info-close"></i>
+            </div>
+            <div class="body">
+                <p>
+                    O site foi desenvolvido a partir de um protótipo (UI desenvolvido em PS) escolhido pelo cliente.
+                </p>
+                <ul>
+                    <li>
+                        <div class="number">1</div>
+                        <div class="task-item-text">UI criada com photoshop</div>
+                        <div class="clear"></div>
+                    </li>
+                    <li>
+                        <div class="number">2</div>
+                        <div class="task-item-text">Front-End desenvolvido com BootStrap</div>
+                        <div class="clear"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</li>
