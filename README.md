@@ -9,29 +9,13 @@ Personal Page is a project that contains a person's personal information and res
 
 ## Team
 
-Personal Page was made with love by these people and a bunch of awesome [contributors](https://github.com/MichaelRSilva/PersonalPage).
+Personal Page was made with love by these people and a bunch of awesome [contributors](https://github.com/leonardomarcao/).
 
 #### Creator
 
 [![Leonardo Marcão](https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAf4AAAAJGI1OWEyNmE4LTk5YTktNDdiYS1iODAzLTE1ZGU4N2U4M2Q4Yg.jpg)](https://github.com/leonardomarcao) |
---- | --- | --- | --- | --- | --- | ---
+--- | --- | ---
 [Leonardo Marcão](https://github.com/leonardomarcao)
-
-## Usage
-
-1. Download the project
-2. Install Node + NPM
-3. Install Bower
-4. Install Gulp
-5. Enter the 'src' folder
-6. Run `npm install`
-7. Run `bower install`
-8. To develop run `gulp watch`
-9. Export project to production run `gulp deploy-production`
-
-## Structure
-* utils: Has the project in Photoshop and several images that can be used for header background.
-* src: Has all project code
 
 ## Browser Support
 
