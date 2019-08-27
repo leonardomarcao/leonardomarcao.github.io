@@ -13,8 +13,6 @@ Personal Page was made with love by these people and a bunch of awesome [contrib
 
 #### Creator
 
-[![Leonardo Marcão](https://media.licdn.com/dms/image/C4E03AQEfv4ngh2I5FA/profile-displayphoto-shrink_200_200/0?e=1567641600&v=beta&t=BIYyDSpLI9G3Bwi2S0WNVkEEdzBg8mNNWjFyknIXB9o)](https://github.com/leonardomarcao) |
---- | --- | ---
 [Leonardo Marcão](https://github.com/leonardomarcao)
 
 ## Browser Support
