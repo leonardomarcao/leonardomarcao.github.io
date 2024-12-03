@@ -845,12 +845,23 @@
         class Constellation {
             constructor() {
                 this.canvas = document.getElementById('constellation-canvas');
+                if (!this.canvas) return;
+
                 this.ctx = this.canvas.getContext('2d');
                 this.particles = [];
                 this.mouse = { x: 0, y: 0 };
                 this.isMobile = window.innerWidth <= 768;
-                this.init();
                 this.touchEnabled = false;
+                this.isVisible = true;
+                this.frameId = null;
+                this.opacity = 0;
+                this.targetOpacity = this.isMobile ? 0.2 : 0.3;
+                this.resizeTimeout = null;
+
+                if (!window.constellationInitialized) {
+                    this.init();
+                    window.constellationInitialized = true;
+                }
             }
 
             init() {
@@ -858,31 +869,61 @@
                 this.resize();
                 this.createParticles();
                 this.bindEvents();
-                this.animate();
+                this.setupIntersectionObserver();
+                setTimeout(() => this.fadeIn(), 300);
             }
 
             setupConfiguration() {
-                if (this.isMobile) {
-                    this.particleCount = 50;
-                    this.connectionDistance = 150;
-                    this.particleSpeed = 0.2;
-                    this.particleSize = 1;
-                    this.opacity = 0.3;
-                } else {
-                    this.particleCount = 50;
-                    this.connectionDistance = 150;
-                    this.particleSpeed = 0.5;
-                    this.particleSize = 2;
-                    this.opacity = 0.3;
-                }
+                const config = this.isMobile ? {
+                    particleCount: 50,
+                    connectionDistance: 120,
+                    particleSpeed: 0.2,
+                    particleSize: 1
+                } : {
+                    particleCount: 100,
+                    connectionDistance: 120,
+                    particleSpeed: 0.2,
+                    particleSize: 2
+                };
+                Object.assign(this, config);
+            }
+
+            setupIntersectionObserver() {
+                const options = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        this.isVisible = entry.isIntersecting;
+                        if (this.isVisible) {
+                            if (!this.frameId) this.animate();
+                        } else {
+                            if (this.frameId) {
+                                cancelAnimationFrame(this.frameId);
+                                this.frameId = null;
+                            }
+                        }
+                    });
+                }, options);
+
+                observer.observe(this.canvas);
             }
 
             resize() {
-                this.canvas.width = window.innerWidth;
-                this.canvas.height = window.innerHeight;
-                this.isMobile = window.innerWidth <= 768;
-                this.setupConfiguration();
-                this.createParticles();
+                if (this.resizeTimeout) {
+                    clearTimeout(this.resizeTimeout);
+                }
+
+                this.resizeTimeout = setTimeout(() => {
+                    this.canvas.width = window.innerWidth;
+                    this.canvas.height = window.innerHeight;
+                    this.isMobile = window.innerWidth <= 768;
+                    this.setupConfiguration();
+                    this.createParticles();
+                }, 250);
             }
 
             createParticles() {
@@ -921,11 +962,26 @@
 
                 this.canvas.addEventListener('touchmove', (e) => {
                     if (this.touchEnabled) {
+                        e.preventDefault();
                         const rect = this.canvas.getBoundingClientRect();
                         this.mouse.x = e.touches[0].clientX - rect.left;
                         this.mouse.y = e.touches[0].clientY - rect.top;
                     }
                 });
+            }
+
+            fadeIn() {
+                const fadeInterval = setInterval(() => {
+                    if (!this.isVisible) {
+                        clearInterval(fadeInterval);
+                        return;
+                    }
+                    this.opacity += 0.02;
+                    if (this.opacity >= this.targetOpacity) {
+                        this.opacity = this.targetOpacity;
+                        clearInterval(fadeInterval);
+                    }
+                }, 50);
             }
 
             draw() {
@@ -957,30 +1013,40 @@
                         }
                     });
 
-                    const dx = particle.x - this.mouse.x;
-                    const dy = particle.y - this.mouse.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if ((this.touchEnabled || !this.isMobile) && this.mouse.x && this.mouse.y) {
+                        const dx = particle.x - this.mouse.x;
+                        const dy = particle.y - this.mouse.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < this.connectionDistance * 1.5) {
-                        this.ctx.beginPath();
-                        this.ctx.moveTo(particle.x, particle.y);
-                        this.ctx.lineTo(this.mouse.x, this.mouse.y);
-                        this.ctx.strokeStyle = `rgba(189, 195, 199, ${this.opacity * (1 - distance / (this.connectionDistance * 1.5))})`;
-                        this.ctx.stroke();
+                        if (distance < this.connectionDistance * 1.5) {
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(particle.x, particle.y);
+                            this.ctx.lineTo(this.mouse.x, this.mouse.y);
+                            this.ctx.strokeStyle = `rgba(189, 195, 199, ${this.opacity * (1 - distance / (this.connectionDistance * 1.5))})`;
+                            this.ctx.stroke();
+                        }
                     }
                 });
             }
 
             animate() {
+                if (!this.isVisible) {
+                    this.frameId = null;
+                    return;
+                }
+
                 this.draw();
-                requestAnimationFrame(() => this.animate());
+                this.frameId = requestAnimationFrame(() => this.animate());
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            new Constellation();
+            if (!window.constellationInstance) {
+                window.constellationInstance = new Constellation();
+            }
 
-            document.querySelector('a.text-2xl.font-bold.gradient-text').addEventListener('click', (e) => {
+            // Add click handler for logo
+            document.querySelector('a.text-2xl.font-bold.gradient-text')?.addEventListener('click', (e) => {
                 e.preventDefault();
                 window.scrollTo({
                     top: 0,
