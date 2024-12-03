@@ -850,6 +850,7 @@
                 this.mouse = { x: 0, y: 0 };
                 this.isMobile = window.innerWidth <= 768;
                 this.init();
+                this.touchEnabled = false;
             }
 
             init() {
@@ -864,8 +865,8 @@
                 if (this.isMobile) {
                     this.particleCount = 50;
                     this.connectionDistance = 150;
-                    this.particleSpeed = 0.2;
-                    this.particleSize = 1;
+                    this.particleSpeed = 0.3;
+                    this.particleSize = 2;
                     this.opacity = 0.3;
                 } else {
                     this.particleCount = 50;
@@ -899,17 +900,32 @@
 
             bindEvents() {
                 window.addEventListener('resize', () => this.resize());
-                this.canvas.addEventListener('mousemove', (e) => {
-                    const rect = this.canvas.getBoundingClientRect();
-                    this.mouse.x = e.clientX - rect.left;
-                    this.mouse.y = e.clientY - rect.top;
+
+                if (!this.isMobile) {
+                    this.canvas.addEventListener('mousemove', (e) => {
+                        const rect = this.canvas.getBoundingClientRect();
+                        this.mouse.x = e.clientX - rect.left;
+                        this.mouse.y = e.clientY - rect.top;
+                    });
+                }
+
+                this.canvas.addEventListener('touchstart', () => {
+                    this.touchEnabled = true;
                 });
+
+                this.canvas.addEventListener('touchend', () => {
+                    this.touchEnabled = false;
+                    this.mouse.x = 0;
+                    this.mouse.y = 0;
+                });
+
                 this.canvas.addEventListener('touchmove', (e) => {
-                    e.preventDefault();
-                    const rect = this.canvas.getBoundingClientRect();
-                    this.mouse.x = e.touches[0].clientX - rect.left;
-                    this.mouse.y = e.touches[0].clientY - rect.top;
-                }, { passive: false });
+                    if (this.touchEnabled) {
+                        const rect = this.canvas.getBoundingClientRect();
+                        this.mouse.x = e.touches[0].clientX - rect.left;
+                        this.mouse.y = e.touches[0].clientY - rect.top;
+                    }
+                });
             }
 
             draw() {
