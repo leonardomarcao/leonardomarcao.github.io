@@ -352,7 +352,7 @@
         </div>
     </section>
 
-    <section id="experience">
+    <section id="experience" class="py-12">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-bold mb-16 gradient-text text-center"
                 x-text="language === 'en' ? 'Work Experience' : 'Experiência Profissional'">
@@ -483,7 +483,7 @@
 
 
     <!-- Skills Section -->
-    <section id="skills" class="py-24">
+    <section id="skills" class="py-12">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl font-bold mb-16 gradient-text text-center"
                 x-text="language === 'en' ? 'Technical Skills' : 'Habilidades Técnicas'"></h2>
@@ -798,6 +798,21 @@
             const url = lang === 'en' ? 'dist/files/Profile-EN.pdf' : 'dist/files/Profile-PT.pdf';
             window.open(url, '_blank');
         }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                const headerOffset = 60;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
     </script>
 
 </body>
