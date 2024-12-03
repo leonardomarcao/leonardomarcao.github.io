@@ -849,9 +849,7 @@
 
                 this.ctx = this.canvas.getContext('2d');
                 this.particles = [];
-                this.mouse = { x: 0, y: 0 };
                 this.isMobile = window.innerWidth <= 768;
-                this.touchEnabled = false;
                 this.isVisible = true;
                 this.frameId = null;
                 this.opacity = 0;
@@ -941,33 +939,6 @@
 
             bindEvents() {
                 window.addEventListener('resize', () => this.resize());
-
-                if (!this.isMobile) {
-                    this.canvas.addEventListener('mousemove', (e) => {
-                        const rect = this.canvas.getBoundingClientRect();
-                        this.mouse.x = e.clientX - rect.left;
-                        this.mouse.y = e.clientY - rect.top;
-                    });
-                }
-
-                this.canvas.addEventListener('touchstart', () => {
-                    this.touchEnabled = true;
-                });
-
-                this.canvas.addEventListener('touchend', () => {
-                    this.touchEnabled = false;
-                    this.mouse.x = 0;
-                    this.mouse.y = 0;
-                });
-
-                this.canvas.addEventListener('touchmove', (e) => {
-                    if (this.touchEnabled) {
-                        e.preventDefault();
-                        const rect = this.canvas.getBoundingClientRect();
-                        this.mouse.x = e.touches[0].clientX - rect.left;
-                        this.mouse.y = e.touches[0].clientY - rect.top;
-                    }
-                });
             }
 
             fadeIn() {
@@ -1012,20 +983,6 @@
                             this.ctx.stroke();
                         }
                     });
-
-                    if ((!this.isMobile) && this.mouse.x && this.mouse.y) {
-                        const dx = particle.x - this.mouse.x;
-                        const dy = particle.y - this.mouse.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < this.connectionDistance * 1.5) {
-                            this.ctx.beginPath();
-                            this.ctx.moveTo(particle.x, particle.y);
-                            this.ctx.lineTo(this.mouse.x, this.mouse.y);
-                            this.ctx.strokeStyle = `rgba(189, 195, 199, ${this.opacity * (1 - distance / (this.connectionDistance * 1.5))})`;
-                            this.ctx.stroke();
-                        }
-                    }
                 });
             }
 
