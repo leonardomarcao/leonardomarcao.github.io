@@ -1013,7 +1013,7 @@
                         }
                     });
 
-                    if ((this.touchEnabled || !this.isMobile) && this.mouse.x && this.mouse.y) {
+                    if ((!this.isMobile) && this.mouse.x && this.mouse.y) {
                         const dx = particle.x - this.mouse.x;
                         const dy = particle.y - this.mouse.y;
                         const distance = Math.sqrt(dx * dx + dy * dy);
