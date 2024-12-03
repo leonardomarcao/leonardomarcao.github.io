@@ -5,6 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="content-type" content="application/pdf">
+    <meta property="og:title" content="Leonardo Marcão Florentino - Full-Stack Developer">
+    <meta property="og:description"
+        content="Full-Stack Developer with 7+ years of experience specializing in Python, AWS, and modern web technologies">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630/0f172a/ffffff?text=L+M+F">
+    <meta property="og:url" content="https://leonardomarcao.com">
+    <meta property="og:type" content="website">
     <title>Leonardo Marcão Florentino - Full-Stack Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -29,6 +35,15 @@
             background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        #constellation-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
         }
 
         .card {
@@ -248,7 +263,8 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="min-h-screen flex items-center justify-center pt-20 profile-gradient">
+    <header class="min-h-screen flex items-center justify-center pt-20 profile-gradient relative">
+        <canvas id="constellation-canvas"></canvas>
         <div class="max-w-7xl mx-auto px-6 py-20 text-center">
             <div class="mb-12 relative">
                 <img src="dist/images/leonardo-marcao.jpeg" alt="Leonardo Marcão Florentino"
@@ -776,14 +792,12 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
     <button @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="scroll-indicator"
         :class="{'visible': scrolled}">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <script>
-        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -802,13 +816,158 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetElement = document.querySelector(this.getAttribute('href'));
+                const href = this.getAttribute('href');
+
+                if (href === '#') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    return;
+                }
+
+                const targetElement = document.querySelector(href);
+                if (!targetElement) return;
+
                 const headerOffset = 60;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
                 window.scrollTo({
                     top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script>
+
+        class Constellation {
+            constructor() {
+                this.canvas = document.getElementById('constellation-canvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.mouse = { x: 0, y: 0 };
+                this.isMobile = window.innerWidth <= 768;
+                this.init();
+            }
+
+            init() {
+                this.setupConfiguration();
+                this.resize();
+                this.createParticles();
+                this.bindEvents();
+                this.animate();
+            }
+
+            setupConfiguration() {
+                if (this.isMobile) {
+                    this.particleCount = 50;
+                    this.connectionDistance = 150;
+                    this.particleSpeed = 0.2;
+                    this.particleSize = 1;
+                    this.opacity = 0.3;
+                } else {
+                    this.particleCount = 50;
+                    this.connectionDistance = 150;
+                    this.particleSpeed = 0.5;
+                    this.particleSize = 2;
+                    this.opacity = 0.3;
+                }
+            }
+
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+                this.isMobile = window.innerWidth <= 768;
+                this.setupConfiguration();
+                this.createParticles();
+            }
+
+            createParticles() {
+                this.particles = [];
+                for (let i = 0; i < this.particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: (Math.random() - 0.5) * this.particleSpeed,
+                        vy: (Math.random() - 0.5) * this.particleSpeed,
+                        radius: Math.random() * this.particleSize
+                    });
+                }
+            }
+
+            bindEvents() {
+                window.addEventListener('resize', () => this.resize());
+                this.canvas.addEventListener('mousemove', (e) => {
+                    const rect = this.canvas.getBoundingClientRect();
+                    this.mouse.x = e.clientX - rect.left;
+                    this.mouse.y = e.clientY - rect.top;
+                });
+                this.canvas.addEventListener('touchmove', (e) => {
+                    e.preventDefault();
+                    const rect = this.canvas.getBoundingClientRect();
+                    this.mouse.x = e.touches[0].clientX - rect.left;
+                    this.mouse.y = e.touches[0].clientY - rect.top;
+                }, { passive: false });
+            }
+
+            draw() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                this.particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+
+                    if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
+
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(189, 195, 199, ${this.opacity})`;
+                    this.ctx.fill();
+
+                    this.particles.forEach(otherParticle => {
+                        const dx = particle.x - otherParticle.x;
+                        const dy = particle.y - otherParticle.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < this.connectionDistance) {
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(particle.x, particle.y);
+                            this.ctx.lineTo(otherParticle.x, otherParticle.y);
+                            this.ctx.strokeStyle = `rgba(189, 195, 199, ${this.opacity * 0.5 * (1 - distance / this.connectionDistance)})`;
+                            this.ctx.stroke();
+                        }
+                    });
+
+                    const dx = particle.x - this.mouse.x;
+                    const dy = particle.y - this.mouse.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < this.connectionDistance * 1.5) {
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(particle.x, particle.y);
+                        this.ctx.lineTo(this.mouse.x, this.mouse.y);
+                        this.ctx.strokeStyle = `rgba(189, 195, 199, ${this.opacity * (1 - distance / (this.connectionDistance * 1.5))})`;
+                        this.ctx.stroke();
+                    }
+                });
+            }
+
+            animate() {
+                this.draw();
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new Constellation();
+
+            document.querySelector('a.text-2xl.font-bold.gradient-text').addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
                     behavior: 'smooth'
                 });
             });
