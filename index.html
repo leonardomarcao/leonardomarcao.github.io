@@ -37,15 +37,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        #constellation-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
         .card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
@@ -264,7 +255,6 @@
 
     <!-- Hero Section -->
     <header class="min-h-screen flex items-center justify-center pt-20 profile-gradient relative">
-        <canvas id="constellation-canvas"></canvas>
         <div class="max-w-7xl mx-auto px-6 py-20 text-center">
             <div class="mb-12 relative">
                 <img src="dist/images/leonardo-marcao.jpeg" alt="Leonardo Marcão Florentino"
@@ -841,168 +831,8 @@
         });
     </script>
     <script>
-
-        class Constellation {
-            constructor() {
-                this.canvas = document.getElementById('constellation-canvas');
-                if (!this.canvas) return;
-
-                this.ctx = this.canvas.getContext('2d');
-                this.particles = [];
-                this.isMobile = window.innerWidth <= 768;
-                this.isVisible = true;
-                this.frameId = null;
-                this.opacity = 0;
-                this.targetOpacity = this.isMobile ? 0.2 : 0.3;
-                this.resizeTimeout = null;
-
-                if (!window.constellationInitialized) {
-                    this.init();
-                    window.constellationInitialized = true;
-                }
-            }
-
-            init() {
-                this.setupConfiguration();
-                this.resize();
-                this.createParticles();
-                this.bindEvents();
-                this.setupIntersectionObserver();
-                setTimeout(() => this.fadeIn(), 300);
-            }
-
-            setupConfiguration() {
-                const config = this.isMobile ? {
-                    particleCount: 50,
-                    connectionDistance: 120,
-                    particleSpeed: 0.2,
-                    particleSize: 1
-                } : {
-                    particleCount: 100,
-                    connectionDistance: 120,
-                    particleSpeed: 0.2,
-                    particleSize: 2
-                };
-                Object.assign(this, config);
-            }
-
-            setupIntersectionObserver() {
-                const options = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0
-                };
-
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        this.isVisible = entry.isIntersecting;
-                        if (this.isVisible) {
-                            if (!this.frameId) this.animate();
-                        } else {
-                            if (this.frameId) {
-                                cancelAnimationFrame(this.frameId);
-                                this.frameId = null;
-                            }
-                        }
-                    });
-                }, options);
-
-                observer.observe(this.canvas);
-            }
-
-            resize() {
-                if (this.resizeTimeout) {
-                    clearTimeout(this.resizeTimeout);
-                }
-
-                this.resizeTimeout = setTimeout(() => {
-                    this.canvas.width = window.innerWidth;
-                    this.canvas.height = window.innerHeight;
-                    this.isMobile = window.innerWidth <= 768;
-                    this.setupConfiguration();
-                    this.createParticles();
-                }, 250);
-            }
-
-            createParticles() {
-                this.particles = [];
-                for (let i = 0; i < this.particleCount; i++) {
-                    this.particles.push({
-                        x: Math.random() * this.canvas.width,
-                        y: Math.random() * this.canvas.height,
-                        vx: (Math.random() - 0.5) * this.particleSpeed,
-                        vy: (Math.random() - 0.5) * this.particleSpeed,
-                        radius: Math.random() * this.particleSize
-                    });
-                }
-            }
-
-            bindEvents() {
-                window.addEventListener('resize', () => this.resize());
-            }
-
-            fadeIn() {
-                const fadeInterval = setInterval(() => {
-                    if (!this.isVisible) {
-                        clearInterval(fadeInterval);
-                        return;
-                    }
-                    this.opacity += 0.02;
-                    if (this.opacity >= this.targetOpacity) {
-                        this.opacity = this.targetOpacity;
-                        clearInterval(fadeInterval);
-                    }
-                }, 50);
-            }
-
-            draw() {
-                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-                this.particles.forEach(particle => {
-                    particle.x += particle.vx;
-                    particle.y += particle.vy;
-
-                    if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
-                    if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
-
-                    this.ctx.beginPath();
-                    this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-                    this.ctx.fillStyle = `rgba(189, 195, 199, ${this.opacity})`;
-                    this.ctx.fill();
-
-                    this.particles.forEach(otherParticle => {
-                        const dx = particle.x - otherParticle.x;
-                        const dy = particle.y - otherParticle.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
-
-                        if (distance < this.connectionDistance) {
-                            this.ctx.beginPath();
-                            this.ctx.moveTo(particle.x, particle.y);
-                            this.ctx.lineTo(otherParticle.x, otherParticle.y);
-                            this.ctx.strokeStyle = `rgba(189, 195, 199, ${this.opacity * 0.5 * (1 - distance / this.connectionDistance)})`;
-                            this.ctx.stroke();
-                        }
-                    });
-                });
-            }
-
-            animate() {
-                if (!this.isVisible) {
-                    this.frameId = null;
-                    return;
-                }
-
-                this.draw();
-                this.frameId = requestAnimationFrame(() => this.animate());
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
-            if (!window.constellationInstance) {
-                window.constellationInstance = new Constellation();
-            }
 
-            // Add click handler for logo
             document.querySelector('a.text-2xl.font-bold.gradient-text')?.addEventListener('click', (e) => {
                 e.preventDefault();
                 window.scrollTo({
