@@ -1,787 +1,782 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122484093-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="content-type" content="application/pdf">
+    <title>Leonardo Marcão Florentino - Full-Stack Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Manrope', sans-serif;
         }
 
-        gtag('js', new Date());
+        .bg-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
 
-        gtag('config', 'UA-122484093-1');
-    </script>
-    <meta charset="utf-8">
-    <meta content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width' name=viewport>
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    <link rel="icon" type="image/png" href="dist/images/favicon.png">
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
 
-    <title>Leonardo Marcão - Full-Stack developer</title>
-    <meta name="description"
-          content="Estudante de Ciência da Computação pela UNIP, empreendedor, apaixonado por IoT e segurança da informação, e movido a base de café ;)"/>
-    <link rel="author" href="https://www.linkedin.com/in/leonardomarcao">
+        .card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
 
-    <meta name="keywords" content="Leonardo Marcão, Full-Stack Developer, codes, Front-End, Back-End"/>
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: #94a3b8;
+            transition: color 0.3s ease;
+        }
 
-    <!-- Facebook and Twitter meta-tags -->
-    <meta property="og:title" content="Leonardo Marcão - Full-Stack developer"/>
-    <meta property="og:image"
-          content="https://media.licdn.com/dms/image/C4E03AQEfv4ngh2I5FA/profile-displayphoto-shrink_200_200/0?e=1567641600&v=beta&t=BIYyDSpLI9G3Bwi2S0WNVkEEdzBg8mNNWjFyknIXB9o"/>
-    <meta property="og:url" content="/"/>
-    <meta property="og:site_name" content="Leonardo Marcão - Full-Stack developer"/>
-    <meta property="og:description"
-          content="Estudante de Ciência da Computação pela UNIP, empreendedor, apaixonado por IoT e segurança da informação, e movido a base de café ;)"/>
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 100%;
+            height: 1px;
+            background: #ffffff;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
 
+        .nav-link:hover {
+            color: #ffffff;
+        }
 
-    <link rel="stylesheet" href="dist/css/styles.css">
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .language-switcher {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+        }
+
+        .language-button {
+            padding: 0.5rem 1rem;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+        }
+
+        .language-button.active {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            color: #94a3b8;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .profile-gradient {
+            background: radial-gradient(circle at 50% 50%, 
+                rgba(59, 130, 246, 0.15) 0%, 
+                rgba(37, 99, 235, 0.1) 25%, 
+                transparent 50%);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            right: 2rem;
+            bottom: 2rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .scroll-indicator.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-indicator:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
 </head>
-
-<body>
-
-
-<header class="header-main" id="home">
-
-    <div class="menu-icon-top">
-        <i class="fa fa-th-large"></i>
-    </div>
-
-    <nav role="navigation">
-        <ul>
-
-            <li>
-                <a href="#home">
-                    <i class="fa fa-home"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#about">
-                    <i class="fa fa-user-circle"></i>
-                    <span>About</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#skills">
-                    <i class="fa fa-code"></i>
-                    <span>Skills</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="#projects">
-                    <i class="fa fa-tasks"></i>
-                    <span>Projects</span>
-                </a>
-            </li>
-            <!--
-            <li class="item-menu">
-                <a data-remodal-target="modalResumeDownload">
-                    <i class="fa fa-cloud-download"></i>
-                    <span>Resume</span>
-                </a>
-            </li>
-            -->
-
-            <li>
-                <a href="#contact">
-                    <i class="fa fa-phone-square"></i>
-                    <span>Contact</span>
-                </a>
-            </li>
-            <!--
-            <li class="item-menu">
-                <a data-remodal-target="modalNoticeBlog">
-                    <i class="fa fa-quote-right"></i>
-                    <span>Blog</span>
-                </a>
-            </li>
-            -->
-        </ul>
-
-
-        <div class="menu-close">
-            <i class="fa fa-angle-up"></i>
-        </div>
-
-    </nav>
-
-
-    <div class="header-main-content">
-
-        <div class="michael-main-photo">
-            <img src="dist/images/leonardo-marcao.jpeg" alt="Leonardo Marcão">
-        </div>
-
-        <div class="text-main">
-            <p>Hello</p>
-            <p>I am</p>
-            <h1>Leonardo Marcão.</h1>
-            <div class="subtitle">Full-stack Developer</div>
-        </div>
-
-    </div>
-
-    <a href="#about" class="noselect">
-
-        <div class="arrow-down-header">
-            <i class="fa fa-arrow-down"></i>
-        </div>
-    </a>
-
-</header>
-
-<!--
-
-<div class="remodal" data-remodal-id="modalNoticeBlog">
-    <button data-remodal-action="close" class="remodal-close"></button>
-    <h3>Hello :D</h3>
-    <p>
-        I'm building my blog, to share many interesting things about full-stack development.
-        <br><br>
-        As soon as it's ready i'll announce it on twitter.
-    </p>
-    <br>
-    <button data-remodal-action="confirm" class="remodal-confirm no-select">OK</button>
-</div>
-
-
-<div class="remodal" data-remodal-id="modalResumeDownload">
-    <button data-remodal-action="close" class="remodal-close"></button>
-    <h3>Resume</h3>
-    <p onclick="fechar()">
-        Choose a Resume version to download.
-    </p>
-    <br>
-    <a href="dist/files/cv-michaelsilva-pt.pdf" onclick="closeModalResumeDownload();" target="_blank"><button class="remodal-cancel no-select">Português</button></a>
-    <a href="dist/files/cv-michaelsilva-en.pdf" onclick="closeModalResumeDownload();" target="_blank"><button class="remodal-confirm no-select">English</button></a>
-</div>
-
--->
-
-<main role="main">
-
-    <a href="#home" class="noselect">
-        <div class="go-top-page">
-            <i class="fa fa-chevron-up"></i>
-        </div>
-    </a>
-
-    <hr class="hr-about" id="about">
-
-    <section class="section-model-1">
-
-        <header>
-            <h2>Sobre</h2>
-            <h3>Estudante de Ciência da Computação pela UNIP, empreendedor, apaixonado por IoT e segurança da
-                informação, e movido a base de café ;)</h3>
-        </header>
-
-        <div class="container">
-
-            <div class="text">
-                <p>
-                    Nasci em 1996 no interior de São Paulo, na cidade de São Joaquim da Barra, e iniciei o interesse
-                    pela área de Tecnologia da Informação aos 10 anos.
-                </p>
-
-                <p>
-                    Em 2013 me formei em Técnico de Informática, e em 2014 comecei o curso de Ciência da Computação pela
-                    Universidade de Franca. No mesmo ano, realizei um estágio de 5 meses na Polícia Civil do Estado de
-                    São Paulo, pela Fundação do Desenvolvimento Administrativo, onde desenvolvi, sem ônus para o Estado,
-                    um Sistema de Controle e Gerenciamento Patrimonial.
-                </p>
-
-                <p>
-                    No ano de 2015 entrei no Instituto de Biociência, Letras, e Ciências Exatas - Unesp, localizado em
-                    São José do Rio Preto, e no final deste mesmo ano, comecei minha carreira como desenvolvedor na
-                    Empresa de Ciência da Computação Júnior (ECCjr), onde permaneci um ano como desenvolvedor, e logo
-                    após, dois anos como Diretor de Projetos. Após três anos de muito aprendizado e experiência,
-                    relizando projetos em conjunto com a ECCjr e estagiando como Analista de Infraestrutura na empresa
-                    Criação 3D, deixo a UNESP e retorno a minha cidade natal (São Joaquim da Barra).
-                </p>
-
-                <p>
-                    Atualmente, sou formado em Bacharelado de Ciência da Computação pela UNIP, Python Back-end Developer
-                    na Omie e owner da empresa LMF Solutions.
-                </p>
-            </div>
-
-            <div class="image">
-                <img src="dist/images/leonardo-marcao-logo.png" alt="LMF Solutions">
-            </div>
-
-            <div class="user-data">
-                <div class="user-data-content">
-                    <ul>
-
-                        <li>
-                            <div class="user-data-icon">
-                                <I class="fa fa-user-circle"></i>
-                            </div>
-                            <div class="user-data-text">
-                                Leonardo Marcão Florentino
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="user-data-icon">
-                                <img src="dist/images/brazil-icon.png" alt="Leonardo Marcão Brazil Flag">
-                            </div>
-                            <div class="user-data-text">
-                                Brasil
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="user-data-icon">
-                                <I class="fa fa-calendar"></i>
-                            </div>
-                            <div class="user-data-text">
-                                24 anos
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="user-data-icon">
-                                <img src="dist/images/icon-darth.png" alt="Leonardo Marcão Experience">
-                            </div>
-                            <div class="user-data-text">
-                                7 anos de experiência na área de TI
-                            </div>
-                        </li>
-
-
-                        <li>
-                            <div class="user-data-icon">
-                                <I class="fa fa-book"></i>
-                            </div>
-                            <div class="user-data-text">
-                                <ul>
-                                    <li>
-                                        2015-2017 - Ciência da Computação - Instituto de Biociência, Letras, e Ciências
-                                        Exatas -
-                                        Unesp
-                                    </li>
-                                    <li>
-                                        2018 - 2020 - Ciência da Computação - UNIP
-                                    </li>
-                                </ul>
-                                <br>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="user-data-icon">
-                                <I class="fa fa-suitcase"></i>
-                            </div>
-                            <div class="user-data-text">
-                                Atualmente trabalhando como Back-end Developer na Risknow e owner da empresa
-                                LMF Solutions.
-                            </div>
-                        </li>
-                    </ul>
-
+<body class="bg-gradient min-h-screen text-gray-300" x-data="{ 
+    language: 'en',
+    menuOpen: false,
+    scrolled: false,
+    init() {
+        window.addEventListener('scroll', () => {
+            this.scrolled = window.scrollY > 100;
+        })
+    }
+}">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-gradient border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold gradient-text">LMF</a>
+     
+                <!-- Language Switcher -->
+                <div class="language-switcher hidden md:flex">
+                    <button @click="language = 'en'" 
+                            :class="{'language-button': true, 'active': language === 'en'}">EN</button>
+                    <button @click="language = 'pt'" 
+                            :class="{'language-button': true, 'active': language === 'pt'}">PT</button>
                 </div>
-
-                <div class="user-data-content no-border">
-                    <ul class="continuate">
-                        <li>
-                            <I class="fa fa-circle"></i>
-                        </li>
-                        <li>
-                            <I class="fa fa-circle"></i>
-                        </li>
-                        <li>
-                            <I class="fa fa-circle"></i>
-                        </li>
-                    </ul>
+     
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link">
+                        <span x-text="language === 'en' ? 'About' : 'Sobre'"></span>
+                    </a>
+                    <a href="#experience" class="nav-link">
+                        <span x-text="language === 'en' ? 'Experience' : 'Experiência'"></span>
+                    </a>
+                    <a href="#skills" class="nav-link">
+                        <span x-text="language === 'en' ? 'Skills' : 'Habilidades'"></span>
+                    </a>
+                    <a href="#projects" class="nav-link">
+                        <span x-text="language === 'en' ? 'Projects' : 'Projetos'"></span>
+                    </a>
+                    <a href="#talks" class="nav-link">
+                        <span x-text="language === 'en' ? 'Talks' : 'Palestras'"></span>
+                    </a>
+                    <a href="#contact" class="nav-link">
+                        <span x-text="language === 'en' ? 'Contact' : 'Contato'"></span>
+                    </a>
+                    <button @click="window.open(language === 'en' ? '/dist/files/Profile-EN.pdf' : '/dist/files/Profile-PT.pdf', '_blank')" 
+                    class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300">
+                        <span x-text="language === 'en' ? 'Download CV' : 'Baixar CV'"></span>
+                    </button>
+                </div>
+     
+                <!-- Mobile Menu Button -->
+                <button @click="menuOpen = !menuOpen" class="md:hidden">
+                    <i class="fas" :class="menuOpen ? 'fa-times' : 'fa-bars'"></i>
+                </button>
+            </div>
+     
+            <!-- Mobile Menu -->
+            <div x-show="menuOpen" 
+                 x-transition:enter="transition ease-out duration-200"
+                 x-transition:enter-start="opacity-0 -translate-y-4"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 class="md:hidden py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#about" class="nav-link" x-text="language === 'en' ? 'About' : 'Sobre'"></a>
+                    <a href="#experience" class="nav-link" x-text="language === 'en' ? 'Experience' : 'Experiência'"></a>
+                    <a href="#skills" class="nav-link" x-text="language === 'en' ? 'Skills' : 'Habilidades'"></a>
+                    <a href="#projects" class="nav-link" x-text="language === 'en' ? 'Projects' : 'Projetos'"></a>
+                    <a href="#talks" class="nav-link" x-text="language === 'en' ? 'Talks' : 'Palestras'"></a>
+                    <a href="#contact" class="nav-link" x-text="language === 'en' ? 'Contact' : 'Contato'"></a>
+                    <button @click="window.open(language === 'en' ? 'dist/files/Profile-EN.pdf' : 'dist/files/Profile-PT.pdf', '_blank')" 
+                    class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300">
+                        <span x-text="language === 'en' ? 'Download CV' : 'Baixar CV'"></span>
+                    </button>
+                </div>
+                <div class="mt-4 flex justify-center">
+                    <div class="language-switcher">
+                        <button @click="language = 'en'" 
+                                :class="{'language-button': true, 'active': language === 'en'}">EN</button>
+                        <button @click="language = 'pt'" 
+                                :class="{'language-button': true, 'active': language === 'pt'}">PT</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+     </nav>
 
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center pt-20 profile-gradient">
+        <div class="max-w-7xl mx-auto px-6 py-20 text-center">
+            <div class="mb-12 relative">
+                <img src="dist/images/leonardo-marcao.jpeg" 
+                     alt="Leonardo Marcão Florentino"
+                     class="w-48 h-48 rounded-full mx-auto object-cover border-2 border-white/10">
+                <div class="absolute inset-0 rounded-full bg-blue-500/20 blur-xl -z-10"></div>
+            </div>
 
-    <hr class="hr-skills" id="skills" xmlns="http://www.w3.org/1999/html">
-
-    <section class="section-model-2">
-
-        <header>
-            <h2>Habilidades</h2>
-        </header>
-
-        <div class="container">
-
-            <ul>
-
-                <li class="hvr-wobble-to-bottom-right">
-                    <div class="content">
-                        <div class="img-group">
-                            <img src="dist/images/html5-icon.svg" title="HTML5" alt="HTML5">
-                            <img src="dist/images/css3-icon.svg" title="CSS3" alt="CSS3">
-                            <img src="dist/images/js-icon.svg" title="Javascript" alt="Javascript">
-                        </div>
-                        <p class="text">
-                            Criação de projetos utilizando experiência com (UX/UI), combinado com um limpo e organizado
-                            código, feito com HTML5, CSS3 e Js.</p>
-                    </div>
-                </li>
-
-                <li class="hvr-wobble-to-bottom-right">
-                    <div class="content">
-                        <div class="img-group">
-                            <img src="dist/images/bootstrap-icon.svg" title="Bootstrap" alt="Bootstrap">
-                            <img src="dist/images/wordpress-icon.svg" title="Bootstrap" alt="WordPress">
-                        </div>
-
-                        <p class="text">
-                            Utilização de CMS (WordPress) com experiência em back-end e framework front-end (Bootstrap)
-                            para desenvolvimento ágil e layout responsivo.</p>
-                    </div>
-                </li>
-
-                <li class="hvr-wobble-to-bottom-right">
-                    <div class="content">
-                        <div class="img-group">
-                            <img src="dist/images/c-icon.svg" title="C" alt="C">
-                            <img src="dist/images/php-icon.svg" title="PHP" alt="PHP">
-                            <img src="dist/images/java-icon.svg" title="Java" alt="Java">
-                            <img src="dist/images/delphi-icon.svg" title="Java" alt="Java">
-                        </div>
-
-                        <p class="text">
-                            Linguagens as quais estudo e utilizo a mais de cinco anos, principalmente uma grande
-                            experiência com Delphi/Pascal e C/C++.
-                        </p>
-                    </div>
-                </li>
-
-                <li class="hvr-wobble-to-top-right">
-                    <div class="content">
-                        <div class="img-group">
-                            <img src="dist/images/mysql-icon.svg" title="Mysql" alt="Mysql">
-                            <img src="dist/images/sql-icon.svg" title="SQL" alt="SQL">
-                            <img src="dist/images/diagram-icon.svg" title="SQL" alt="SQL">
-                        </div>
-
-                        <p class="text">
-                            Utilização de banco de dados relacional (MySQL, SQL) em conjunto com diagramas UML e
-                            padrões.
-                        </p>
-                    </div>
-                </li>
-
-                <li class="hvr-wobble-to-top-right">
-                    <div class="content">
-                        <div class="img-group">
-                            <img src="dist/images/photoshop-icon.svg" title="Photoshop" alt="Photoshop">
-                            <img src="dist/images/github-icon.svg" title="Github" alt="Github">
-                        </div>
-
-                        <p class="text">
-                            Idealização de projetos (UX/UI) com PS. Utilizo Git/GitHub como as principais ferramentas
-                            para controle de versionamento de projetos.
-                        </p>
-                    </div>
-                </li>
-
-                <li class="hvr-wobble-to-top-right">
-                    <div class="content">
-                        <div class="img-group">
-                            <img src="dist/images/linux-icon.svg" title="Linux" alt="Linux">
-                            <img src="dist/images/raspberry-icon.svg" title="Raspberry" alt="Raspberry">
-                            <img src="dist/images/arduino-icon.svg" title="Arduino" alt="Arduino">
-                        </div>
-
-                        <p class="text">
-                            Em adicional, meus três grandes hobbies e paixões. Utilizo Linux, Raspberry e Arduino a mais
-                            de quatro anos. Foram inúmeros projetos com os três em conjunto, desde de automação a
-                            robótica.
-                        </p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-    </section>
-
-    <hr class="hr-projects" id="projects">
-
-    <section class="section-model-3">
-        <header>
-            <h2>Últimos Projetos</h2>
-            <h3>Veja alguns dos trabalhos os quais eu realizei. Qualquer dúvida, por favor, entre em contato comigo
-                <3</h3>
-        </header>
-
-        <div class="container">
-
-            <ul class="gallery">
-
-                <li class="project-item">
-                    <div class="item hvr-bubble-float-top">
-
-                        <span class="lightgallery">
-                            <a href="dist/images/projects/anne-0.gif" class="cover">
-                                <img src="dist/images/projects/anne-0.gif">
-                            </a>
-                        </span>
-
-                        <p class="title">
-                            <a href="https://github.com/leonardomarcao/ScubaDiving">Anne</a>
-                        </p>
-                        <p class="text">
-                            Anne - 5th semester project developed at Universidade Paulista
-                        </p>
-
-                        <i class="fa fa-bars open-project" title="View More"></i>
-
-                        <div class="project-info">
-                            <div class="title">
-                                <i class="fa fa-tasks title-icon"></i> About
-                                <i class="fa fa-close project-info-close"></i>
-                            </div>
-                            <div class="body">
-                                <p>
-                                    Residential security system which uses a night vision camera connected to a
-                                    raspberry pi 3 to monitor access to an electronic lock.
-                                </p>
-                                <ul>
-                                    <li>
-                                        <div class="number">1</div>
-                                        <div class="task-item-text">Project link
-                                            <a href="https://github.com/leonardomarcao/Anne"
-                                                                                 target="_blank">Click Here</a></div>
-                                        <div class="clear"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="project-item">
-                    <div class="item hvr-bubble-float-top">
-
-                        <span class="lightgallery">
-                            <a href="dist/images/projects/scuba-diving-0.png" class="cover">
-                                <img src="dist/images/projects/scuba-diving-0.png">
-                            </a>
-                        </span>
-
-                        <p class="title">
-                            <a href="https://github.com/leonardomarcao/ScubaDiving">ScubaDiving</a>
-                        </p>
-                        <p class="text">
-                            Scuba Diving Game - 3th semester project developed at Universidade Paulista
-                        </p>
-
-                        <i class="fa fa-bars open-project" title="View More"></i>
-
-                        <div class="project-info">
-                            <div class="title">
-                                <i class="fa fa-tasks title-icon"></i> About
-                                <i class="fa fa-close project-info-close"></i>
-                            </div>
-                            <div class="body">
-                                <p>
-                                    Game project developed at the Paulista University on sustainable development.
-                                    The Scuba Diving Game has a didactic purpose of helping other people understand a little
-                                    about sustainability, with the main scenario being a scuba diver who collects garbage
-                                    at the bottom of the ocean.
-                                </p>
-                                <ul>
-                                    <li>
-                                        <div class="number">1</div>
-                                        <div class="task-item-text">Project link
-                                            <a href="https://github.com/leonardomarcao/ScubaDiving"
-                                               target="_blank">Click Here</a></div>
-                                        <div class="clear"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="project-item">
-                    <div class="item hvr-bubble-float-top">
-
-                        <span class="lightgallery">
-                            <a href="dist/images/projects/PFA-0.png.png" class="cover">
-                                <img src="dist/images/projects/PFA-0.png">
-                            </a>
-                        </span>
-
-                        <p class="title">
-                            <a href="https://github.com/leonardomarcao/PFA">PFA</a>
-                        </p>
-                        <p class="text">
-                            Personal Financial Assistant - 4th semester project developed at Universidade Paulista
-                        </p>
-
-                        <i class="fa fa-bars open-project" title="View More"></i>
-
-                        <div class="project-info">
-                            <div class="title">
-                                <i class="fa fa-tasks title-icon"></i> About
-                                <i class="fa fa-close project-info-close"></i>
-                            </div>
-                            <div class="body">
-                                <p>
-                                    The Personal Financial Assistant's main objective is to optimize the flow of expenses
-                                    and revenues to help you control your expenses. The system is completely independent,
-                                    not limited to static data, such as registering different types of expenses and revenues,
-                                    allowing the generation of dynamic reports.
-                                </p>
-                                <ul>
-                                    <li>
-                                        <div class="number">1</div>
-                                        <div class="task-item-text">Project link
-                                            <a href="https://github.com/leonardomarcao/PFA"
-                                               target="_blank">Click Here</a></div>
-                                        <div class="clear"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="project-item">
-                    <div class="item hvr-bubble-float-top">
-
-                        <span class="lightgallery">
-                            <a href="dist/images/projects/cppc-0.png" class="cover">
-                                <img src="dist/images/projects/cppc-0.png"
-                                     alt="Sistema de Controle e Gerenciamento Patrimonial - Tela Principal - Clique na seta para o 'próximo'">
-                            </a>
-                            <a href="dist/images/projects/cppc-1.png">
-                                <img src="dist/images/projects/cppc-1.png"
-                                     alt="Sistema de Controle e Gerenciamento Patrimonial - Tela de Login">
-                            </a>
-                            <a href="dist/images/projects/cppc-2.png">
-                                <img src="dist/images/projects/cppc-2.png"
-                                     alt="Sistema de Controle e Gerenciamento Patrimonial - Termo de Inventário e Tombo">
-                            </a>
-                            <a href="dist/images/projects/cppc-3.png">
-                                <img src="dist/images/projects/cppc-3.png"
-                                     alt="Sistema de Controle e Gerenciamento Patrimonial - Relatório de Ocorrências">
-                            </a>
-                        </span>
-
-                        <p class="title">
-                            CPPC
-                        </p>
-                        <p class="text">
-                            Sistema de Controle e Gerenciamento Patrimonial desenvolvido enquanto eu realizava estágio
-                            na Polícia Civil.
-                        </p>
-
-                        <i class="fa fa-bars open-project" title="View More"></i>
-
-                        <div class="project-info">
-                            <div class="title">
-                                <i class="fa fa-tasks title-icon"></i> Tasks
-                                <i class="fa fa-close project-info-close"></i>
-                            </div>
-                            <div class="body">
-                                <p>
-                                    Todos os passos de desenvolvimento foram acompanhados pelo meu supervisor de estágio
-                                    Marcelo Cunha Ferreira.
-                                </p>
-                                <ul>
-                                    <li>
-                                        <div class="number">1</div>
-                                        <div class="task-item-text">Modelagem dos diagramas estrutural e
-                                            comportamental
-                                        </div>
-                                        <div class="clear"></div>
-                                    </li>
-                                    <li>
-                                        <div class="number">2</div>
-                                        <div class="task-item-text">RAD Studio XE6</div>
-                                        <div class="clear"></div>
-                                    </li>
-                                    <li>
-                                        <div class="number">3</div>
-                                        <div class="task-item-text">Banco de Dados: MySQL</div>
-                                        <div class="clear"></div>
-                                    </li>
-                                    <li>
-                                        <div class="number">4</div>
-                                        <div class="task-item-text"><a
-                                                href="https://drive.google.com/file/d/0B8LPARiSl8nONnhMWk50QVdyZHc/view"
-                                                target="_blank">Certidão</a> do sistema
-                                        </div>
-                                        <div class="clear"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-
-                <li class="project-item">
-                    <div class="item hvr-bubble-float-top">
-
-                        <span class="">
-                            <a class="cover">
-                                <img src="dist/images/projects/iot-0.jpg" alt="SEG - Cover - Click in the arrow 'next'">
-                            </a>
-                        </span>
-
-                        <p class="title">
-                            Palestra sobre IoT
-                        </p>
-                        <p class="text">
-                            Palestra sobre Internet das Coisas ministrada por mim na ETEC Pedro Badran.
-                        </p>
-
-                        <i class="fa fa-bars open-project" title="View More"></i>
-
-                        <div class="project-info">
-                            <div class="title">
-                                <i class="fa fa-tasks title-icon"></i> About
-                                <i class="fa fa-close project-info-close"></i>
-                            </div>
-                            <div class="body">
-                                <p>
-                                    A palestra enfatizou diversas aplicações utilizando IoT, desde de automação
-                                    residencial a projetos relacionados com a indústria automobilística.
-                                </p>
-                                <ul>
-                                    <li>
-                                        <div class="number">1</div>
-                                        <div class="task-item-text">Slides da palestra: <a target="_blank"
-                                                                                           href="https://goo.gl/I1PcnE">Click
-                                            Here</a></div>
-                                        <div class="clear"></div>
-                                    </li>
-                                    <li>
-                                        <div class="number">2</div>
-                                        <div class="task-item-text">Vídeo da palestra: <a target="_blank"
-                                                                                          href=" https://www.youtube.com/watch?v=jg3dMoGVfM4">YouTube</a>
-                                        </div>
-                                        <div class="clear"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="project-item">
-                    <div class="item hvr-bubble-float-top">
-
-                        <span class="lightgallery">
-                            <a href="dist/images/projects/webserver-0.jpg" class="cover">
-                                <img src="dist/images/projects/webserver-0.jpg" alt=" WebServer - Arduino">
-                            </a>
-                        </span>
-
-                        <p class="title">
-                            WebServer - Arduino
-                        </p>
-                        <p class="text">
-                            WebServer desenvolvido com Arduino e Ethernet Shield para monitoramento de temperatura e
-                            humidade num ambiente interno.
-                        </p>
-
-                        <i class="fa fa-bars open-project" title="View More"></i>
-
-                        <div class="project-info">
-                            <div class="title">
-                                <i class="fa fa-tasks title-icon"></i> Tasks
-                                <i class="fa fa-close project-info-close"></i>
-                            </div>
-                            <div class="body">
-                                <p>
-                                    Todo monitoramento foi registrado através de um bando de dados, além da
-                                    possibilidade de acesso remoto ao sistema.
-                                </p>
-                                <ul>
-                                    <li>
-                                        <div class="number">1</div>
-                                        <div class="task-item-text">Prototipagem desenvolvida no Fritzing</div>
-                                        <div class="clear"></div>
-                                    </li>
-                                    <li>
-                                        <div class="number">2</div>
-                                        <div class="task-item-text">Arduino + Ethernet Shield</div>
-                                        <div class="clear"></div>
-                                    </li>
-                                    <li>
-                                        <div class="number">3</div>
-                                        <div class="task-item-text">Utilização da linguagem C + Front-End em BootStrap
-                                        </div>
-                                        <div class="clear"></div>
-                                    </li>
-                                    <li>
-                                        <div class="number">4</div>
-                                        <div class="task-item-text">SGBD: MySql</div>
-                                        <div class="clear"></div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-
-            </ul>
-        </div>
-    </section>
-
-    <hr class="hr-contact" id="contact">
-
-    <section class="section-model-4">
-
-        <header>
-            <h2>Contato</h2>
-        </header>
-
-        <div class="container">
-
-            <p class="text-contact">
-                This open source project is in <a href="https://github.com/leonardomarcao/leonardomarcao.github.io"
-                                                  target="_blank">Github.</a>
-                <br>
-                Designed and coded with lots of <img src="dist/images/heart.svg"> by myself.
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">
+                Leonardo Marcão Florentino
+            </h1>
+            
+            <p class="text-xl md:text-2xl mb-12 text-gray-400" x-text="language === 'en' ? 
+                'Full-Stack Developer' : 
+                'Desenvolvedor Full-Stack'">
             </p>
 
+            <div class="flex justify-center space-x-8">
+                <a href="https://github.com/leonardomarcao" target="_blank" 
+                   class="text-3xl hover:text-white transition-colors duration-300">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/leonardomarcao" target="_blank" 
+                   class="text-3xl hover:text-white transition-colors duration-300">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://www.youtube.com/@leonardomarcaof" target="_blank" 
+                   class="text-3xl hover:text-white transition-colors duration-300">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
         </div>
+    </header>
 
+    <!-- About Section -->
+    <section id="about" class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 gradient-text text-center" 
+                x-text="language === 'en' ? 'About Me' : 'Sobre Mim'"></h2>
+
+            <div class="grid md:grid-cols-2 gap-16">
+                <div class="space-y-6">
+                    <p class="text-lg leading-relaxed" x-show="language === 'en'">
+                        Born in São Joaquim da Barra, a charming city in the interior of São Paulo, 
+                        I embarked on my coding journey at the age of 13. A Python enthusiast, 
+                        I'm always seeking professional improvement. My philosophy? The key to success 
+                        is relentless effort.
+                    </p>
+                    <p class="text-lg leading-relaxed" x-show="language === 'pt'">
+                        Nascido em São Joaquim da Barra, uma charmosa cidade do interior de São Paulo, 
+                        iniciei minha jornada na programação aos 13 anos. Entusiasta de Python, 
+                        estou sempre buscando aperfeiçoamento profissional. Minha filosofia? 
+                        A chave para o sucesso é o esforço incansável.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="card p-6 rounded-2xl">
+                            <div class="text-4xl font-bold mb-2">7+</div>
+                            <div class="text-gray-400" x-text="language === 'en' ? 
+                                'Years Experience' : 'Anos de Experiência'"></div>
+                        </div>
+                        <div class="card p-6 rounded-2xl">
+                            <div class="text-4xl font-bold mb-2">50+</div>
+                            <div class="text-gray-400" x-text="language === 'en' ? 
+                                'Projects Completed' : 'Projetos Concluídos'"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4" x-text="language === 'en' ? 
+                            'Education' : 'Educação'"></h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-medium">Bachelor's Degree in Computer Science</p>
+                                <p class="text-gray-400">Paulista University, 2018-2020</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4" x-text="language === 'en' ? 
+                        'Languages' : 'Idiomas'"></h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span>Portuguese</span>
+                                <span class="text-gray-400">Native</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>English</span>
+                                <span class="text-gray-400">B1 - Intermediate</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span>Spanish</span>
+                                <span class="text-gray-400">B2 - Upper-Intermediate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
+    <section id="experience">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 gradient-text text-center"
+                x-text="language === 'en' ? 'Work Experience' : 'Experiência Profissional'">
+            </h2>
+    
+            <div class="space-y-12">
+                <!-- Motor Hero -->
+                <div class="card bg-white p-8 shadow-lg rounded-2xl hover:scale-[1.02] transition-transform duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Tech Lead</h3>
+                            <a href="https://motorhero.com.br/" target="_blank" class="text-gray-500">Motor Hero</a>
+                            <p class="mt-4 text-gray-600"
+                               x-text="language === 'en' ? 
+                               'Driving technology strategies, team growth, and innovative, scalable solutions in e-commerce for automotive parts.' : 
+                               'Liderando estratégias de tecnologia, crescimento da equipe e soluções inovadoras e escaláveis em e-commerce de peças automotivas.'">
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">FastAPI</span>
+                                <span class="skill-tag">Leadership</span>
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Django</span>
+                            </div>
+                        </div>
+                        <span class="text-gray-500"
+                              x-text="language === 'en' ? 'Jan 2024 - Present' : 'Jan 2024 - Atual'">
+                        </span>
+                    </div>
+                </div>
+    
+                <!-- Omie -->
+                <div class="card bg-white p-8 shadow-lg rounded-2xl hover:scale-[1.02] transition-transform duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Senior Python Backend Developer</h3>
+                            <a href="https://omie.com.br" target="_blank" class="text-gray-500">Omie</a>
+                            <p class="mt-4 text-gray-600"
+                               x-text="language === 'en' ? 
+                               'Enhanced CRM platforms, optimized integrations, and improved team performance in managing financial software services.' : 
+                               'Melhorou plataformas de CRM, otimizou integrações e aumentou o desempenho da equipe na gestão de serviços financeiros.'">
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">FastAPI</span>
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Microservices</span>
+                            </div>
+                        </div>
+                        <span class="text-gray-500">Apr 2022 - Dec 2023</span>
+                    </div>
+                </div>
+    
+                <!-- TCL Solutions -->
+                <div class="card bg-white p-8 shadow-lg rounded-2xl hover:scale-[1.02] transition-transform duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Full-stack Developer</h3>
+                            <a href="https://www.tclsolucoes.com.br" target="_blank" class="text-gray-500">TCL Solutions</a>
+                            <p class="mt-4 text-gray-600"
+                               x-text="language === 'en' ? 
+                               'Led technical audits and delivered ERP solutions integrated with real-time monitoring systems.' : 
+                               'Liderou auditorias técnicas e entregou soluções ERP integradas a sistemas de monitoramento em tempo real.'">
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="skill-tag">.NET</span>
+                                <span class="skill-tag">SQL Server</span>
+                                <span class="skill-tag">Azure</span>
+                                <span class="skill-tag">ERP</span>
+                            </div>
+                        </div>
+                        <span class="text-gray-500">Sep 2021 - Apr 2022</span>
+                    </div>
+                </div>
+    
+                <!-- Risknow.ai -->
+                <div class="card bg-white p-8 shadow-lg rounded-2xl hover:scale-[1.02] transition-transform duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Python Backend Developer</h3>
+                            <a href="https://askliquid.com" target="_blank" class="text-gray-500">Liquid.ai</a>
+                            <p class="mt-4 text-gray-600"
+                               x-text="language === 'en' ? 
+                               'Built ETL pipelines and data-driven microservices to streamline KPI reporting and analytics.' : 
+                               'Desenvolveu pipelines ETL e microsserviços orientados a dados para simplificar relatórios de KPI e análises.'">
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">ETL</span>
+                            </div>
+                        </div>
+                        <span class="text-gray-500">Aug 2020 - Sep 2021</span>
+                    </div>
+                </div>
+    
+                <!-- Blue3 -->
+                <div class="card bg-white p-8 shadow-lg rounded-2xl hover:scale-[1.02] transition-transform duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">Full-stack Developer</h3>
+                            <a href="https://blue3investimentos.com.br/" target="_blank" class="text-gray-500">Blue3</a>
+                            <p class="mt-4 text-gray-600"
+                               x-text="language === 'en' ? 
+                               'Implemented data warehousing solutions and automated internal workflows for efficiency gains.' : 
+                               'Implementou soluções de data warehouse e automatizou fluxos de trabalho internos para ganhos de eficiência.'">
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Django</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">Data Warehouse</span>
+                            </div>
+                        </div>
+                        <span class="text-gray-500">Jun 2019 - Aug 2020</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 
-</main>
+    <!-- Skills Section -->
+    <section id="skills" class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 gradient-text text-center" 
+                x-text="language === 'en' ? 'Technical Skills' : 'Habilidades Técnicas'"></h2>
 
-<footer class="footer-main">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Frontend -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="text-3xl mb-6">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-6">Frontend</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Vue.js</span>
+                        <span class="skill-tag">Tailwind</span>
+                        <span class="skill-tag">Chakra UI</span>                        
+                        <span class="skill-tag">shadcn/ui</span>
+                    </div>
+                </div>
 
-    <div class="social-medias">
+                <!-- Backend -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="text-3xl mb-6">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-6">Backend</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Flask</span>                        
+                    </div>
+                </div>
 
-        <a href="https://github.com/leonardomarcao" target="_blank"><i class="fa fa-github hvr-bob"></i></a>
-        <a href="https://www.youtube.com/channel/UC3T__Zb6GjJmJDmfn7u7zNQ" target="_blank"><i
-                class="fa fa-youtube hvr-bob"></i></a>
-        <a href="https://www.linkedin.com/in/leonardomarcao" target="_blank"><i class="fa fa-linkedin hvr-bob"></i></a>
+                <!-- DevOps -->
+                <div class="card p-8 rounded-2xl">
+                    <div class="text-3xl mb-6">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-6">DevOps</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Linux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-32">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-16 gradient-text text-center" 
+            x-text="language === 'en' ? 'Featured Projects' : 'Projetos em Destaque'"></h2>
+ 
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Mr. Referee -->
+            <div class="card rounded-2xl overflow-hidden">
+                <img src="dist/images/projects/mr-referee.gif" alt="Mr. Referee" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Mr. Referee</h3>
+                    <p class="text-gray-400 mb-4" x-text="language === 'en' ? 
+                        'Application for monitoring parliamentary spending' : 
+                        'Aplicação para monitoramento de gastos parlamentares'"></p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag">React-Native</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                    <a href="https://github.com/leonardomarcao/mr-referee-app" target="_blank" 
+                       class="inline-flex items-center text-white hover:text-gray-300">
+                        <span x-text="language === 'en' ? 'View Project' : 'Ver Projeto'"></span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+ 
+            <!-- Anne -->
+            <div class="card rounded-2xl overflow-hidden">
+                <img src="dist/images/projects/anne-0.gif" alt="Anne" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Anne</h3>
+                    <p class="text-gray-400 mb-4" x-text="language === 'en' ? 
+                        'Smart home security system using Raspberry Pi' : 
+                        'Sistema de segurança residencial inteligente usando Raspberry Pi'"></p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">IoT</span>
+                        <span class="skill-tag">Raspberry Pi</span>
+                    </div>
+                    <a href="https://github.com/leonardomarcao/Anne" target="_blank" 
+                       class="inline-flex items-center text-white hover:text-gray-300">
+                        <span x-text="language === 'en' ? 'View Project' : 'Ver Projeto'"></span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+ 
+            <!-- Scuba Diving -->
+            <div class="card rounded-2xl overflow-hidden">
+                <img src="dist/images/projects/scuba-diving-0.png" alt="Scuba Diving" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Scuba Diving</h3>
+                    <p class="text-gray-400 mb-4" x-text="language === 'en' ? 
+                        'Educational game promoting environmental awareness' : 
+                        'Jogo educativo promovendo consciência ambiental'"></p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Game Dev</span>
+                    </div>
+                    <a href="https://github.com/leonardomarcao/ScubaDiving" target="_blank" 
+                       class="inline-flex items-center text-white hover:text-gray-300">
+                        <span x-text="language === 'en' ? 'View Project' : 'Ver Projeto'"></span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+ 
+            <!-- PFA -->
+            <div class="card rounded-2xl overflow-hidden">
+                <img src="dist/images/projects/PFA-0.png" alt="PFA" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">PFA</h3>
+                    <p class="text-gray-400 mb-4" x-text="language === 'en' ? 
+                        'Personal Financial Assistant - Smart money management' :
+                        'Assistente Financeiro Pessoal - Gestão inteligente de dinheiro'"></p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Spring</span>
+                    </div>
+                    <a href="https://github.com/leonardomarcao/PFA" target="_blank" 
+                       class="inline-flex items-center text-white hover:text-gray-300">
+                        <span x-text="language === 'en' ? 'View Project' : 'Ver Projeto'"></span>
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
+ </section>
 
-    <div class="text-final">
-        <a href="mailto:leonardo.marcao.florentino@gmail.com" target="_top">leonardo.marcao.florentino@gmail.com</a>
+<!-- Talks Section -->
+<section id="talks" class="py-32">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-16 gradient-text text-center" 
+            x-text="language === 'en' ? 'Conference Talks' : 'Palestras'"></h2>
+ 
+        <div class="space-y-8">
+            <div class="card p-8 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4" x-text="language === 'en' ? 
+                    'IT Market in Brazil 2023: Analysis, Trends and Opportunities' :
+                    'Mercado de TI no Brasil 2023: Análise, Tendências e Oportunidades'"></h3>
+                <p class="text-gray-400 mb-4">ETEC Pedro Badran (2023)</p>
+                <a href="https://youtu.be/59Qif59358c?si=7TwGocaSlJkB09sq" target="_blank" 
+                   class="inline-flex items-center text-white hover:text-gray-300">
+                    <i class="fab fa-youtube mr-2"></i>
+                    <span x-text="language === 'en' ? 'Watch Video' : 'Assistir Vídeo'"></span>
+                </a>
+            </div>
+ 
+            <div class="card p-8 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4" x-text="language === 'en' ? 
+                    'The IT Market in Brazil and Global Acceleration' :
+                    'O Mercado de TI no Brasil e Aceleração Global'"></h3>
+                <p class="text-gray-400 mb-4">E. E. Manoel Martins (2022)</p>
+                <a href="https://www.youtube.com/watch?v=suFPWMTZchc" target="_blank" 
+                   class="inline-flex items-center text-white hover:text-gray-300">
+                    <i class="fab fa-youtube mr-2"></i>
+                    <span x-text="language === 'en' ? 'Watch Video' : 'Assistir Vídeo'"></span>
+                </a>
+            </div>
+ 
+            <div class="card p-8 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4" x-text="language === 'en' ? 
+                    'The Python Market in Brazil' :
+                    'O Mercado Python no Brasil'"></h3>
+                <p class="text-gray-400 mb-4">20ª Semana de informática - Etec Pedro Badran (2021)</p>
+                <a href="https://www.youtube.com/watch?v=SrmDK5ExGTw" target="_blank" 
+                   class="inline-flex items-center text-white hover:text-gray-300">
+                    <i class="fab fa-youtube mr-2"></i>
+                    <span x-text="language === 'en' ? 'Watch Video' : 'Assistir Vídeo'"></span>
+                </a>
+            </div>
+ 
+            <div class="card p-8 rounded-2xl">
+                <h3 class="text-xl font-bold mb-4" x-text="language === 'en' ? 
+                    'Internet of Things (IoT): Going Beyond Connectivity' :
+                    'Internet das Coisas (IoT): Indo além da conectividade'"></h3>
+                <p class="text-gray-400 mb-4">2016</p>
+                <a href="https://youtu.be/jg3dMoGVfM4?si=DNqg8R7JjnjqSmj9" target="_blank" 
+                   class="inline-flex items-center text-white hover:text-gray-300">
+                    <i class="fab fa-youtube mr-2"></i>
+                    <span x-text="language === 'en' ? 'Watch Video' : 'Assistir Vídeo'"></span>
+                </a>
+            </div>
+        </div>
     </div>
+ </section>
 
-</footer>
+    <!-- Contact Section -->
+    <section id="contact" class="py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-16 gradient-text text-center" 
+                x-text="language === 'en' ? 'Get in Touch' : 'Contato'"></h2>
 
-<script src="dist/scripts/scripts.js"></script>
+            <div class="grid md:grid-cols-4 gap-8">
+                <a href="mailto:leonardo.marcao.florentino@gmail.com" 
+                   class="card p-8 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <i class="fas fa-envelope text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Email</h3>
+                    <p class="text-gray-400 text-xs">leonardo.marcao.florentino@gmail.com</p>
+                </a>
+
+                <a href="https://github.com/leonardomarcao" target="_blank"
+                   class="card p-8 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <i class="fab fa-github text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">GitHub</h3>
+                    <p class="text-gray-400">@leonardomarcao</p>
+                </a>
+
+                <a href="https://www.linkedin.com/in/leonardomarcao" target="_blank"
+                   class="card p-8 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <i class="fab fa-linkedin text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">LinkedIn</h3>
+                    <p class="text-gray-400">@leonardomarcao</p>
+                </a>
+
+                <a href="https://www.youtube.com/@leonardomarcaof" target="_blank"
+                   class="card p-8 rounded-2xl text-center hover:scale-105 transition-transform duration-300">
+                    <i class="fab fa-youtube text-3xl mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">YouTube</h3>
+                    <p class="text-gray-400">@leonardomarcaof</p>
+                </a>
+            </div>
+
+            <div class="mt-16 text-center">
+                <p class="text-gray-400 text-lg">
+                    <span x-text="language === 'en' ? 
+                        'Let\'s work together to create something amazing!' : 
+                        'Vamos trabalhar juntos para criar algo incrível!'"></span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 gradient-text">LMF</h3>
+                    <p class="text-gray-400">
+                        <span x-text="language === 'en' ? 
+                            'Full-Stack Developer passionate about creating amazing digital experiences.' : 
+                            'Desenvolvedor Full-Stack apaixonado por criar experiências digitais incríveis.'"></span>
+                    </p>
+                </div>
+
+                <div class="flex justify-end space-x-6">
+                    <a href="https://github.com/leonardomarcao" target="_blank" 
+                       class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/leonardomarcao" target="_blank"
+                       class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@leonardomarcaof" target="_blank"
+                       class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-youtube text-xl"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-gray-600">
+                <p>© 2024 Leonardo Marcão Florentino. 
+                    <span x-text="language === 'en' ? 
+                        'All rights reserved.' : 
+                        'Todos os direitos reservados.'"></span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button @click="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="scroll-indicator"
+            :class="{'visible': scrolled}">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        function downloadCV() {
+            const lang = Alpine.store('language') || 'en';
+            const url = lang === 'en' ? 'dist/files/Profile-EN.pdf' : 'dist/files/Profile-PT.pdf';
+            window.open(url, '_blank');
+        }
+    </script>
 
 </body>
-
 </html>
