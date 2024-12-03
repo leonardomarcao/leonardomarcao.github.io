@@ -792,6 +792,31 @@
             const url = lang === 'en' ? 'dist/files/Profile-EN.pdf' : 'dist/files/Profile-PT.pdf';
             window.open(url, '_blank');
         }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const userLanguage = navigator.language || navigator.userLanguage;
+
+            const detectedLanguage = userLanguage.startsWith('pt') ? 'pt' : 'en';
+
+            document.querySelector('body').__x = {
+                language: detectedLanguage,
+                menuOpen: false,
+                scrolled: false,
+                init() {
+                    window.addEventListener('scroll', () => {
+                        this.scrolled = window.scrollY > 100;
+                    });
+                }
+            };
+
+            const languageButtons = document.querySelectorAll('.language-button');
+            languageButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.textContent === detectedLanguage.toUpperCase()) {
+                    button.classList.add('active');
+                }
+            });
+        });
     </script>
 
 </body>
