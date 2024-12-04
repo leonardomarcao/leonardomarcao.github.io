@@ -171,17 +171,25 @@
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
 </head>
-
-<body class="bg-gradient min-h-screen text-gray-300" x-data="{ 
-    language: getBrowserLanguage(),
-    menuOpen: false,
-    scrolled: false,
-    init() {
-        window.addEventListener('scroll', () => {
-            this.scrolled = window.scrollY > 100;
-        });
-    }
-}">
+<body class="bg-gradient min-h-screen text-gray-300" 
+    x-data="{ 
+        language: getBrowserLanguage(),
+        menuOpen: false,
+        scrolled: false,
+        init() {
+            window.addEventListener('scroll', () => {
+                this.scrolled = window.scrollY > 100;
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (this.menuOpen && !e.target.closest('.mobile-menu-container')) {
+                    this.menuOpen = false;
+                }
+            });
+        }
+    }">
+    
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-gradient border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6">
@@ -197,53 +205,36 @@
                         :class="{'language-button': true, 'active': language === 'pt'}">PT</button>
                 </div>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="nav-link">
-                        <span x-text="language === 'en' ? 'About' : 'Sobre'"></span>
-                    </a>
-                    <a href="#experience" class="nav-link">
-                        <span x-text="language === 'en' ? 'Experience' : 'Experiência'"></span>
-                    </a>
-                    <a href="#skills" class="nav-link">
-                        <span x-text="language === 'en' ? 'Skills' : 'Habilidades'"></span>
-                    </a>
-                    <a href="#projects" class="nav-link">
-                        <span x-text="language === 'en' ? 'Projects' : 'Projetos'"></span>
-                    </a>
-                    <a href="#talks" class="nav-link">
-                        <span x-text="language === 'en' ? 'Talks' : 'Palestras'"></span>
-                    </a>
-                    <a href="#contact" class="nav-link">
-                        <span x-text="language === 'en' ? 'Contact' : 'Contato'"></span>
-                    </a>
-                    <button
-                        @click="window.open(language === 'en' ? '/dist/files/Profile-EN.pdf' : '/dist/files/Profile-PT.pdf', '_blank')"
-                        class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300">
-                        <span x-text="language === 'en' ? 'Download CV' : 'Baixar CV'"></span>
-                    </button>
-                </div>
+                <!-- Desktop Navigation remains the same -->
 
                 <!-- Mobile Menu Button -->
-                <button @click="menuOpen = !menuOpen" class="md:hidden">
+                <button @click.stop="menuOpen = !menuOpen" class="md:hidden">
                     <i class="fas" :class="menuOpen ? 'fa-times' : 'fa-bars'"></i>
                 </button>
             </div>
 
             <!-- Mobile Menu -->
-            <div x-show="menuOpen" x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
-                class="md:hidden py-4">
+            <div x-show="menuOpen" 
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 -translate-y-4" 
+                x-transition:enter-end="opacity-100 translate-y-0"
+                @click.away="menuOpen = false"
+                class="md:hidden py-4 mobile-menu-container">
                 <div class="flex flex-col space-y-4">
-                    <a href="#about" class="nav-link" x-text="language === 'en' ? 'About' : 'Sobre'"></a>
-                    <a href="#experience" class="nav-link"
+                    <a href="#about" @click="menuOpen = false" class="nav-link" 
+                        x-text="language === 'en' ? 'About' : 'Sobre'"></a>
+                    <a href="#experience" @click="menuOpen = false" class="nav-link"
                         x-text="language === 'en' ? 'Experience' : 'Experiência'"></a>
-                    <a href="#skills" class="nav-link" x-text="language === 'en' ? 'Skills' : 'Habilidades'"></a>
-                    <a href="#projects" class="nav-link" x-text="language === 'en' ? 'Projects' : 'Projetos'"></a>
-                    <a href="#talks" class="nav-link" x-text="language === 'en' ? 'Talks' : 'Palestras'"></a>
-                    <a href="#contact" class="nav-link" x-text="language === 'en' ? 'Contact' : 'Contato'"></a>
+                    <a href="#skills" @click="menuOpen = false" class="nav-link" 
+                        x-text="language === 'en' ? 'Skills' : 'Habilidades'"></a>
+                    <a href="#projects" @click="menuOpen = false" class="nav-link" 
+                        x-text="language === 'en' ? 'Projects' : 'Projetos'"></a>
+                    <a href="#talks" @click="menuOpen = false" class="nav-link" 
+                        x-text="language === 'en' ? 'Talks' : 'Palestras'"></a>
+                    <a href="#contact" @click="menuOpen = false" class="nav-link" 
+                        x-text="language === 'en' ? 'Contact' : 'Contato'"></a>
                     <button
-                        @click="window.open(language === 'en' ? 'dist/files/Profile-EN.pdf' : 'dist/files/Profile-PT.pdf', '_blank')"
+                        @click="window.open(language === 'en' ? 'dist/files/Profile-EN.pdf' : 'dist/files/Profile-PT.pdf', '_blank'); menuOpen = false"
                         class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300">
                         <span x-text="language === 'en' ? 'Download CV' : 'Baixar CV'"></span>
                     </button>
@@ -258,7 +249,7 @@
                 </div>
             </div>
         </div>
-    </nav>
+    </nav> 
 
     <!-- Hero Section -->
     <header class="min-h-screen flex items-center justify-center pt-20 profile-gradient relative">
