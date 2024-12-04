@@ -205,7 +205,32 @@
                         :class="{'language-button': true, 'active': language === 'pt'}">PT</button>
                 </div>
 
-                <!-- Desktop Navigation remains the same -->
+<!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link">
+                        <span x-text="language === 'en' ? 'About' : 'Sobre'"></span>
+                    </a>
+                    <a href="#experience" class="nav-link">
+                        <span x-text="language === 'en' ? 'Experience' : 'Experiência'"></span>
+                    </a>
+                    <a href="#skills" class="nav-link">
+                        <span x-text="language === 'en' ? 'Skills' : 'Habilidades'"></span>
+                    </a>
+                    <a href="#projects" class="nav-link">
+                        <span x-text="language === 'en' ? 'Projects' : 'Projetos'"></span>
+                    </a>
+                    <a href="#talks" class="nav-link">
+                        <span x-text="language === 'en' ? 'Talks' : 'Palestras'"></span>
+                    </a>
+                    <a href="#contact" class="nav-link">
+                        <span x-text="language === 'en' ? 'Contact' : 'Contato'"></span>
+                    </a>
+                    <button
+                        @click="window.open(language === 'en' ? '/dist/files/Profile-EN.pdf' : '/dist/files/Profile-PT.pdf', '_blank')"
+                        class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-all duration-300">
+                        <span x-text="language === 'en' ? 'Download CV' : 'Baixar CV'"></span>
+                    </button>
+                </div>
 
                 <!-- Mobile Menu Button -->
                 <button @click.stop="menuOpen = !menuOpen" class="md:hidden">
